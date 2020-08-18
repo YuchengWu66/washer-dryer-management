@@ -21,7 +21,7 @@ import com.laioffer.washerdrymanagement.R;
 import com.laioffer.washerdrymanagement.base.BaseFragment;
 import com.laioffer.washerdrymanagement.base.BaseRepository;
 import com.laioffer.washerdrymanagement.base.BaseViewModel;
-import com.laioffer.washerdrymanagement.databinding.RegisterFragmentBinding;
+import com.laioffer.washerdrymanagement.databinding.FragmentRegisterBinding;
 import com.laioffer.washerdrymanagement.remote.RemoteResponseListener;
 import com.laioffer.washerdrymanagement.remote.response.RemoteResponse;
 import com.laioffer.washerdrymanagement.remote.response.UserInfo;
@@ -34,7 +34,7 @@ import com.laioffer.washerdrymanagement.util.Utils;
 
 public class RegisterFragment extends BaseFragment<RegisterViewModel, RegisterRepository> {
 
-    private RegisterFragmentBinding binding;
+    private FragmentRegisterBinding binding;
 
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -43,7 +43,7 @@ public class RegisterFragment extends BaseFragment<RegisterViewModel, RegisterRe
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = RegisterFragmentBinding.inflate(inflater, container, false);
+        binding = FragmentRegisterBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 

@@ -11,26 +11,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import android.view.LayoutInflater;
+import android.view.SearchEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.laioffer.washerdrymanagement.base.BaseFragment;
-import com.laioffer.washerdrymanagement.databinding.LoginFragmentBinding;
+import com.laioffer.washerdrymanagement.databinding.FragmentLoginBinding;
 import com.laioffer.washerdrymanagement.remote.response.UserInfo;
 import com.laioffer.washerdrymanagement.ui.home.HomeFragment;
 import com.laioffer.washerdrymanagement.ui.NavigationManager;
 import com.laioffer.washerdrymanagement.util.Utils;
+import com.laioffer.washerdrymanagement.util.Config;
 
 
 public class LoginFragment extends BaseFragment<LoginViewModel, LoginRepository> {
 
-    private LoginFragmentBinding binding;
+    private FragmentLoginBinding binding;
     private NavigationManager navigationManager;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = LoginFragmentBinding.inflate(inflater, container, false);
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -54,7 +56,7 @@ public class LoginFragment extends BaseFragment<LoginViewModel, LoginRepository>
                 Config.username = it.response.name;
                 Utils.hideKeyboard(getActivity());
                 viewModel.setNull();
-                navigationManager.navigateTo(new HomeListFragment(new SearchEvent(0,"")));
+//                navigationManager.navigateTo(new HomeFragment(new SearchEvent(0,"")));
             } else {
                 Utils.constructToast(getContext(), it == null ? "Error !" : it.status).show();
             }
