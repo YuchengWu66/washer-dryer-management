@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
+import com.laioffer.washerdrymanagement.ui.NavigationManager;
+
 public class MainActivity extends AppCompatActivity implements NavigationManager {
 
     @Override
