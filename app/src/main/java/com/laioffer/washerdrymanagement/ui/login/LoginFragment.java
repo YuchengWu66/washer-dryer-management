@@ -56,7 +56,7 @@ public class LoginFragment extends BaseFragment<LoginViewModel, LoginRepository>
                 Config.username = it.response.name;
                 Utils.hideKeyboard(getActivity());
                 viewModel.setNull();
-//                navigationManager.navigateTo(new HomeFragment(new SearchEvent(0,"")));
+                navigationManager.navigateTo(new HomeFragment(new SearchEvent(0,"")));
             } else {
                 Utils.constructToast(getContext(), it == null ? "Error !" : it.status).show();
             }
