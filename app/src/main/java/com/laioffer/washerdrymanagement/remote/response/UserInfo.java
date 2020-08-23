@@ -1,6 +1,9 @@
 package com.laioffer.washerdrymanagement.remote.response;
 
-public class UserInfo {
+import java.io.Serializable;
+
+public class UserInfo implements Serializable {
+
     public String userId;
     public String name;
 }
