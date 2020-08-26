@@ -23,7 +23,17 @@ public class MainActivity extends AppCompatActivity {
         notificationManager = NotificationManagerCompat.from(this);
         machineID = findViewById(R.id.details_machine_num);
         timeleft = findViewById(R.id.details_time_left);
+        setContentView(R.layout.main);
+        navigateTo(new OnBoardingBaseFragment());
+        }
 
+    @Override
+    public void navigateTo(Fragment fragment) {
+    getSupportFragmentManager()
+            .beginTransaction()
+            .replace(R.id.first_fragment, fragment, null)
+            .addToBackStack(null)
+            .commit();
     }
     public void sendOnChannelmachine(){
         String title = machineID.getText().toString();
