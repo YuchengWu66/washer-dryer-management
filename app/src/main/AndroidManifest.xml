@@ -15,14 +15,29 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.editProfile.PersonalFileActivity" />
+        <activity android:name=".ui.userInfo.UserInfoActivity" />
+        <activity android:name=".ui.detail.DetailActivity"/>
+        <activity android:name=".ui.report.ReportActivity"/>
+        <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.detail.StartActivity"/>
+        <activity android:name=".ui.detail.ReportActivity" />
+
+
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <service android:name=".ui.reservation.TimerService"
+            android:enabled="true"/>
+
     </application>
 
 </manifest>

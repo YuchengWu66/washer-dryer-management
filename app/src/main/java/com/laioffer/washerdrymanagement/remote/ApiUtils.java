@@ -1,7 +1,8 @@
 package com.laioffer.washerdrymanagement.remote;
 
 public class ApiUtils {
-    public static final String BASE_URL = "url";
+    public static final String BASE_URL = "http://10.0.2.2:8088/washer/";
+
 
     public static ApiService getAPIService() {
         return RetrofitClient.getClient(BASE_URL).create(ApiService.class);

@@ -11,10 +11,11 @@ import retrofit2.http.POST;
 
 public interface ApiService {
 
-    @POST("washerdrymanagement/login") // need to know exactly
+    @POST("login") // need to know exactly
     Call<RemoteResponse<UserInfo>> login(@Body LoginEvent body);
 
-    @POST("washerdrymanagement/register") // need to know exactly
+    @POST("register") // need to know exactly
+
     Call<RemoteResponse<UserInfo>> register(@Body RegisterEvent body);
 
 }

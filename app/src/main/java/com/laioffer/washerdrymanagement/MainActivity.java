@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements NavigationManager
                 .commit();
     }
 
-
     // add Fragment to the activity
     //getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, MainFragment.newInstance()).commit();
 }
