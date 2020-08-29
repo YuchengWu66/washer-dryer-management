@@ -25,8 +25,8 @@ public class ReportActivity extends AppCompatActivity {
     private String REPORT_URL; // add later
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_report);
         editTextMachineID = findViewById(R.id.report_machineID);
         editTexterror = findViewById(R.id.report_error);
         ActionBar actionBar = getActionBar();

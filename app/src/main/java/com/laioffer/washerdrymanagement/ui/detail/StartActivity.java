@@ -28,7 +28,7 @@ public class StartActivity extends AppCompatActivity {
    // String UserID;
     String ID;
     String machineID;
-    CheckBox checkbox;
+//    CheckBox checkbox;
     TextView MachineID;
     String StartURL;
 //    Button startbt;
@@ -51,9 +51,10 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_start);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        checkbox = findViewById(R.id.checkBox_add);
+//        checkbox = findViewById(R.id.checkBox_add);
 //        startbt = findViewById(R.id.start_button);
 //        reportbt = findViewById(R.id.report_button);
 //        waitbt = findViewById(R.id.wait_button);
@@ -63,12 +64,7 @@ public class StartActivity extends AppCompatActivity {
         params.put("status", "reserve");
         params.put("item_id", ID);
 
-        if (checkbox.isChecked()){
-            //send 60min request
-            sendRequest(params);
-        }else{
-            sendRequest(params);
-        }
+        sendRequest(params);
 
         //start api with UserID and MachineID
     }
