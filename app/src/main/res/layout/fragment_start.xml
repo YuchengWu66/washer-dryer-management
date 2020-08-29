@@ -9,7 +9,13 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Machine NO."
+        android:textSize="40dp"
+        android:id="@+id/startmachine_id"/>
     <CheckBox
         android:id="@+id/checkBox_add"
         android:layout_width="match_parent"

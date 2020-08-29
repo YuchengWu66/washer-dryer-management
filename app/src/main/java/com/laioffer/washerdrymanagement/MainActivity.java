@@ -3,6 +3,8 @@ package com.laioffer.washerdrymanagement;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.fragment.app.Fragment;
+
 
 import android.app.NotificationManager;
 import android.os.Bundle;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         navigateTo(new OnBoardingBaseFragment());
         }
 
-    @Override
+//    @Override
     public void navigateTo(Fragment fragment) {
     getSupportFragmentManager()
             .beginTransaction()
