@@ -11,7 +11,6 @@ public class RegisterEvent {
     final String firstName;
     @SerializedName("last_name")
     final String lastName;
-
     @SerializedName("phone_number")
     final String phoneNumber;
 
@@ -20,7 +19,6 @@ public class RegisterEvent {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-
         this.phoneNumber = phoneNumber;
     }
 }

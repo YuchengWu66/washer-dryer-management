@@ -47,7 +47,7 @@ public class LoginFragment extends BaseFragment<LoginViewModel, LoginRepository>
         super.onViewCreated(view, savedInstanceState);
         binding.btnLogin.setOnClickListener( v -> {
             viewModel.login(new LoginEvent(binding.etUserIdLogin.getText().toString(),
-                    binding.etPasswordLogin.getText().toString()));  // faker user info
+                    Utils.md5Encryption(binding.etPasswordLogin.getText().toString())));  // faker user info
         });
         viewModel.getRemoteResponseMutableLiveData().observe(getViewLifecycleOwner(), it -> {
             if (it != null && it.status.equals("OK")) {
