@@ -19,6 +19,7 @@ import com.laioffer.washerdrymanagement.databinding.ElementLayoutBinding;
 import com.laioffer.washerdrymanagement.ui.detail.DetailActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +43,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     }
     public void setWashers(List<Item> newList) {
         washers.clear();
+        Collections.sort(newList, (a, b)-> {
+            return a.item_id.compareTo(b.item_id);
+        });
         washers.addAll(newList);
         notifyDataSetChanged();
     }
@@ -61,7 +65,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     public void onBindViewHolder(@NonNull HomeAdapter.HomeViewHolder holder, int position) {
         Item washer = washers.get(position);
         holder.washerTextView.setText(washer.item_id);
-        holder.washerImageView.setImageResource(R.drawable.ic_kitchen_tools_washer_svgrepo_com);
         holder.typeTextView.setText(washer.type);
         holder.conditionTextView.setText(washer.condition);
         if (washer.condition.equals("available")) {
@@ -71,10 +74,40 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
                 context.startActivity(new Intent(context, DetailActivity.class));
             }
         });
-            holder.conditionTextView.setTextColor(0xff00ff00);
+            holder.conditionTextView.setTextColor(0xff1296db);
+            if (washer.type.equals("washer")) {
+                holder.washerImageView.setImageResource(R.drawable.ic_washer_available);
+            }
+            else {
+                holder.washerImageView.setImageResource(R.drawable.ic_dryer_available);
+            }
         }
-        else{
-            holder.conditionTextView.setTextColor(0xffff0000);
+        else if (washer.condition.equals("reserve")){
+            holder.conditionTextView.setTextColor(0xfff4ea2a);
+            if (washer.type.equals("washer")) {
+                holder.washerImageView.setImageResource(R.drawable.ic_washer_using);
+            }
+            else {
+                holder.washerImageView.setImageResource(R.drawable.ic_dryer_using);
+            }
+        }
+        else if (washer.condition.equals("finished")){
+            holder.conditionTextView.setTextColor(0xffd4237a);
+            if (washer.type.equals("washer")) {
+                holder.washerImageView.setImageResource(R.drawable.ic_washer_finished);
+            }
+            else {
+                holder.washerImageView.setImageResource(R.drawable.ic_dryer_finished);
+            }
+        }
+        else {
+            holder.conditionTextView.setTextColor(0xff707070);
+            if (washer.type.equals("washer")) {
+                holder.washerImageView.setImageResource(R.drawable.ic_washer_occupied);
+            }
+            else {
+                holder.washerImageView.setImageResource(R.drawable.ic_dryer_occupied);
+            }
         }
         holder.cardView.setVisibility(View.INVISIBLE);
         Log.d("aaaa", "filter" + filter);

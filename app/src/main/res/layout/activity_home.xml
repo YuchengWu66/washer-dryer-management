@@ -16,11 +16,13 @@
         android:id="@+id/head_bar"
         android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        app:title="App"
-        app:titleTextColor="@android:color/white"
-        app:navigationIcon="@drawable/ic_menu_white_24dp"/>
-
+        android:background="@color/white"
+        app:title="Washer &amp; Dryer Management"
+        app:titleTextColor="@android:color/black"
+        app:navigationIcon="@drawable/ic_xiyiji"/>
+        <View  android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black"/>
         <fragment
             android:id="@+id/nav_host_fragment"
             android:name="com.laioffer.washerdrymanagement.ui.home.HomeFragment"
@@ -84,6 +86,7 @@
                 android:layout_height="2dp"
                 android:background="@color/black"/>
             <TextView
+                android:drawableStart= "@drawable/ic_article_24px"
                 android:id = "@+id/reservation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,6 +106,7 @@
                 android:layout_height="2dp"
                 android:background="@color/black"/>
             <TextView
+                android:drawableStart = "@drawable/ic_description_black_18dp"
                 android:id = "@+id/report"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -122,6 +126,7 @@
                 android:layout_height="2dp"
                 android:background="@color/black"/>
             <TextView
+                android:drawableStart= "@drawable/ic_exit_to_app_black_18dp"
                 android:id = "@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
