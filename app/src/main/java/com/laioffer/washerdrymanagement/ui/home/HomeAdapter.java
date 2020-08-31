@@ -2,6 +2,7 @@ package com.laioffer.washerdrymanagement.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.laioffer.washerdrymanagement.R;
 import com.laioffer.washerdrymanagement.database.Item;
 import com.laioffer.washerdrymanagement.databinding.ElementLayoutBinding;
 import com.laioffer.washerdrymanagement.ui.detail.DetailActivity;
+import com.laioffer.washerdrymanagement.ui.detail.StartActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -71,7 +73,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
             holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, DetailActivity.class));
+                    Bundle b = new Bundle();
+                    b.putString("ID", washer.item_id);
+                    b.putString("type", washer.type);
+                    b.putString("condition", washer.condition);
+                    b.putString("end_time", washer.end_time);
+
+                    Intent intent = new Intent(context, StartActivity.class);
+                    intent.putExtras(b);
+                    context.startActivity(intent);
+
             }
         });
             holder.conditionTextView.setTextColor(0xff1296db);
@@ -91,6 +102,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
                 holder.washerImageView.setImageResource(R.drawable.ic_dryer_using);
             }
         }
+
         else if (washer.condition.equals("finished")){
             holder.conditionTextView.setTextColor(0xffd4237a);
             if (washer.type.equals("washer")) {
@@ -100,14 +112,23 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
                 holder.washerImageView.setImageResource(R.drawable.ic_dryer_finished);
             }
         }
-        else {
-            holder.conditionTextView.setTextColor(0xff707070);
-            if (washer.type.equals("washer")) {
-                holder.washerImageView.setImageResource(R.drawable.ic_washer_occupied);
-            }
-            else {
-                holder.washerImageView.setImageResource(R.drawable.ic_dryer_occupied);
-            }
+        else{
+            holder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle b = new Bundle();
+                    b.putString("ID", washer.item_id);
+                    b.putString("type", washer.type);
+                    b.putString("condition", washer.condition);
+                    b.putString("end_time", washer.end_time);
+
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtras(b);
+                    context.startActivity(intent);
+
+                }
+            });
+            holder.conditionTextView.setTextColor(0xffff0000);
         }
         holder.cardView.setVisibility(View.INVISIBLE);
         Log.d("aaaa", "filter" + filter);
