@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
     <TextView
+        android:drawableLeft="@drawable/ic_washing_machine_svgrepo_com"
         android:id = "@+id/expendable_group"
         android:layout_width="0dp"
         android:layout_weight="1"

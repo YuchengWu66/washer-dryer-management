@@ -51,7 +51,6 @@ public class RegisterViewModel extends BaseViewModel<RegisterRepository> {
             errMsgMutableLiveData.setValue("Please enter a last Name!");
             return;
         }
-
         if (Utils.isNullOrEmpty(registerEvent.phoneNumber)) {
             errMsgMutableLiveData.setValue("Please enter a Phone Number!");
             return;

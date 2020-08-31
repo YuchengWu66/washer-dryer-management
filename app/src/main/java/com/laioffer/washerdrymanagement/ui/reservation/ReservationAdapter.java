@@ -26,6 +26,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -61,6 +62,9 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
     public void setReservation(List<Reservation> temp) {
         reservations.clear();
         selected.clear();
+        Collections.sort(temp, (a, b)-> {
+            return a.item_id.compareTo(b.item_id);
+        });
         int i = 0;
         while(i < temp.size()) {
             if (temp.get(i).condition.equals("available") || temp.get(i).condition.equals("damaged")) {
