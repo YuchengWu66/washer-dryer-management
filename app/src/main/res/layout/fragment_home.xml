@@ -18,5 +18,3 @@
             android:id= "@+id/washer_recycler_view" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>
-
-

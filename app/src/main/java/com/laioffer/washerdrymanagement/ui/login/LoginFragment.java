@@ -91,6 +91,3 @@ public class LoginFragment extends BaseFragment<LoginViewModel, LoginRepository>
         return new LoginRepository();
     }
 }
-
-
-
