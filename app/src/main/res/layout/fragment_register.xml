@@ -89,10 +89,10 @@
         android:layout_below="@id/et_first_name"/>
 
     <EditText
-        android:id="@+id/et_phone_number"
+        android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="@string/phone_number"
+        android:hint="@string/email"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
@@ -107,7 +107,7 @@
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/et_phone_number"
+        android:layout_below="@id/et_email"
         android:background="@drawable/btn_custom2"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
