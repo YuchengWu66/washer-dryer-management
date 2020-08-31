@@ -14,16 +14,16 @@ import com.laioffer.washerdrymanagement.util.Utils;
 public class LoginViewModel extends BaseViewModel<LoginRepository> {
 
     private MutableLiveData<LoginEvent> loginEventMutableLiveData = new MutableLiveData<>();
-    private LiveData<RemoteResponse<UserInfo>> remoteResponseMutableLiveData = Transformations.switchMap(loginEventMutableLiveData, repository::login);
+    private LiveData<UserInfo> remoteResponseMutableLiveData = (LiveData<UserInfo>) Transformations.switchMap(loginEventMutableLiveData, repository::login);
     private MutableLiveData<String> errMsgMutableLiveData = new MutableLiveData<>();
 
     LoginViewModel(LoginRepository baseRepository) {
         super(baseRepository);
     }
 
-    public LiveData<RemoteResponse<UserInfo>> getRemoteResponseMutableLiveData() {
+    public LiveData<UserInfo> getRemoteResponseMutableLiveData() {
         if (remoteResponseMutableLiveData == null) {
-            remoteResponseMutableLiveData = Transformations.switchMap(loginEventMutableLiveData, repository::login);
+            remoteResponseMutableLiveData = (LiveData<UserInfo>) Transformations.switchMap(loginEventMutableLiveData, repository::login);
         }
         return remoteResponseMutableLiveData;
     }

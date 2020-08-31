@@ -89,7 +89,7 @@ public class ReservationFragment extends Fragment {
                 if (ReservationAdapter.selected != null) {
                     swipeContainer.setRefreshing(true);
                     for (Integer index : ReservationAdapter.selected) {
-                        repository.deleteReservaiton(ReservationAdapter.reservations.get(index).item_id);
+                        repository.deleteReservaiton(ReservationAdapter.reservations.get(index).item_id, "available");
                     }
                     viewModel.getReservations().observe(
                             getViewLifecycleOwner(),

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.Gravity;
+import android.webkit.WebSettings;
 import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
@@ -74,16 +75,18 @@ public class DataRepository {
         });
         return resultLiveData;
     }
-    public void deleteReservaiton(String item_id) {
+    public void deleteReservaiton(String item_id, String status) {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("status", "available");
+            jsonObject.put("status", status);
             jsonObject.put("item_id", item_id);
         } catch (JSONException e) {
             e.printStackTrace();
         }
         RequestBody body = RequestBody.create(MediaType.parse("Content-Type, application/json"), jsonObject.toString());
-        dataApi.deleteReservation(body).enqueue(new Callback<ResponseBody>() {
+        Call<ResponseBody> call = dataApi.deleteReservation(body);
+        call.request().newBuilder();
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
@@ -107,38 +110,6 @@ public class DataRepository {
             }
         });
     }
-    public void finishReservaiton(String item_id) {
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("status", "finished");
-            jsonObject.put("item_id", item_id);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        RequestBody body = RequestBody.create(MediaType.parse("Content-Type, application/json"), jsonObject.toString());
-        dataApi.deleteReservation(body).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    Toast toast = Toast.makeText(context, "finish Success", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
-                    toast.show();
-                }
-                else {
-                    Log.d("aaaa", response.message());
-                    Toast toast = Toast.makeText(context, "finish failed", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
-                    toast.show();
-                }
-            }
 
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast toast = Toast.makeText(context, "cannot connect method", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
-                toast.show();
-            }
-        });
-    }
 
 }

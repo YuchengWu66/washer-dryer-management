@@ -220,8 +220,11 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
                 Timestamp startstamp = new Timestamp(startDate.getTime());
                 Timestamp endstamp = new Timestamp(endDate.getTime());
                 if ((startstamp.after(endstamp) || startstamp.equals(endstamp))&& temp.condition.equals("reserve")) {
-                    repository.finishReservaiton(temp.item_id);
-                    temp.condition = "finished";
+                    repository.deleteReservaiton(temp.item_id, "start");
+                    temp.condition = "start";
+                }
+                if ((startstamp.after(endstamp) || startstamp.equals(endstamp))&& temp.condition.equals("start")) {
+                    repository.deleteReservaiton(temp.item_id, "available");
                 }
                 reservations.set(i, temp);
             }
