@@ -42,7 +42,7 @@ public class LoginFragment extends BaseFragment<LoginViewModel, LoginRepository>
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        navigationManager = (NavigationManager) context;
+//        navigationManager = (NavigationManager) context;
     }
 
     @Override

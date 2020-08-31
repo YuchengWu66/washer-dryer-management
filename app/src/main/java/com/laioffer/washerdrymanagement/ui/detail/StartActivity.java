@@ -52,8 +52,8 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_start);
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+//        ActionBar actionBar = getActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
 //        checkbox = findViewById(R.id.checkBox_add);
 //        startbt = findViewById(R.id.start_button);
 //        reportbt = findViewById(R.id.report_button);

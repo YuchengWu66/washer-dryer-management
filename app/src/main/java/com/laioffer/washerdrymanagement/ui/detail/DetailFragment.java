@@ -29,7 +29,7 @@ public class DetailFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public LinearLayout onCreate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = FragmentDetailBinding.inflate(inflater, container,false);
         return binding.getRoot();
