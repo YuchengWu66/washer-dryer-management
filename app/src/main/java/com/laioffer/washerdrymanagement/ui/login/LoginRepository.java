@@ -7,6 +7,7 @@ import com.laioffer.washerdrymanagement.remote.response.RemoteResponse;
 import com.laioffer.washerdrymanagement.remote.response.UserInfo;
 //import com.laioffer.washerdrymanagement.remote.response.UserProfile;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,21 +20,21 @@ public class LoginRepository extends BaseRepository {
             return responseMutableLiveData;
         }
         Call<RemoteResponse<UserInfo>> call = apiService.login(loginEvent);
-        call.enqueue(new Callback<RemoteResponse<UserInfo>>() {
-            @EverythingIsNonNull
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<RemoteResponse<UserInfo>> call,
-                                   Response<RemoteResponse<UserInfo>> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 responseMutableLiveData.setValue(response.body());
+
             }
 
-            @EverythingIsNonNull
             @Override
-            public void onFailure(Call<RemoteResponse<UserInfo>> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 RemoteResponse<UserInfo> errResponse = new RemoteResponse<>();
                 errResponse.status = t.getMessage();
                 responseMutableLiveData.setValue(errResponse);
+
             }
+
         });
         return responseMutableLiveData;
     }

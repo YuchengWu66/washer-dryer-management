@@ -7,15 +7,18 @@ import com.laioffer.washerdrymanagement.ui.register.RegisterEvent;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiService {
 
-    @POST("login") // need to know exactly
+    @POST("login")
     Call<RemoteResponse<UserInfo>> login(@Body LoginEvent body);
 
-    @POST("register") // need to know exactly
-
+    @POST("register")
     Call<RemoteResponse<UserInfo>> register(@Body RegisterEvent body);
+
+    @GET("/path/to/get")
+    Call<Void> getMyData(/* your args here */);
 
 }
