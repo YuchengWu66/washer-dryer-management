@@ -22,7 +22,7 @@ public class LoginRepository extends BaseRepository {
         Call<RemoteResponse<UserInfo>> call = apiService.login(loginEvent);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Response<ResponseBody> response) {
                 responseMutableLiveData.setValue(response.body());
 
             }
