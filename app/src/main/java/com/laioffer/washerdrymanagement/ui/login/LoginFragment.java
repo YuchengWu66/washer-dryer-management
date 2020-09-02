@@ -5,11 +5,13 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import android.view.InputDevice;
 import android.view.LayoutInflater;
 import android.view.SearchEvent;
 import android.view.View;
@@ -18,6 +20,7 @@ import android.view.ViewGroup;
 import com.laioffer.washerdrymanagement.base.BaseFragment;
 import com.laioffer.washerdrymanagement.databinding.FragmentLoginBinding;
 import com.laioffer.washerdrymanagement.remote.response.UserInfo;
+import com.laioffer.washerdrymanagement.ui.home.HomeActivity;
 import com.laioffer.washerdrymanagement.ui.home.HomeFragment;
 import com.laioffer.washerdrymanagement.ui.NavigationManager;
 import com.laioffer.washerdrymanagement.util.Utils;
@@ -39,24 +42,25 @@ public class LoginFragment extends BaseFragment<LoginViewModel, LoginRepository>
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        navigationManager = (NavigationManager) context;
+//        navigationManager = (NavigationManager) context;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        LoginRepository.context = getActivity();
         binding.btnLogin.setOnClickListener( v -> {
             viewModel.login(new LoginEvent(binding.etUserIdLogin.getText().toString(),
-                    Utils.md5Encryption(binding.etPasswordLogin.getText().toString())));  // faker user info
+                    binding.etPasswordLogin.getText().toString()));  // faker user info
         });
         viewModel.getRemoteResponseMutableLiveData().observe(getViewLifecycleOwner(), it -> {
             if (it != null && it.status.equals("OK")) {
                 Utils.constructToast(getContext(), "Login success!").show();
-                Config.userId = it.response.userId;
-                Config.username = it.response.name;
+                Config.userId = it.user_id;
+                Config.username = it.name;
                 Utils.hideKeyboard(getActivity());
                 viewModel.setNull();
-//                navigationManager.navigateTo(new HomeFragment(new SearchEvent(0,"")));
+                getActivity().startActivity(new Intent(this.getContext(), HomeActivity.class));
             } else {
                 Utils.constructToast(getContext(), it == null ? "Error !" : it.status).show();
             }
@@ -87,6 +91,3 @@ public class LoginFragment extends BaseFragment<LoginViewModel, LoginRepository>
         return new LoginRepository();
     }
 }
-
-
-

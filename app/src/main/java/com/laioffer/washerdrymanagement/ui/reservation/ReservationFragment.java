@@ -59,7 +59,7 @@ public class ReservationFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         DataRepository repository = new DataRepository(getContext());
-        reservationAdapter = new ReservationAdapter();
+        reservationAdapter = new ReservationAdapter(repository);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(requireContext(), 1);
         binding.reservationRecyclerView.setLayoutManager(gridLayoutManager);
         binding.reservationRecyclerView.setAdapter(reservationAdapter);
@@ -89,7 +89,7 @@ public class ReservationFragment extends Fragment {
                 if (ReservationAdapter.selected != null) {
                     swipeContainer.setRefreshing(true);
                     for (Integer index : ReservationAdapter.selected) {
-                        repository.deleteReservaiton(ReservationAdapter.reservations.get(index).item_id);
+                        repository.deleteReservaiton(ReservationAdapter.reservations.get(index).item_id, "available");
                     }
                     viewModel.getReservations().observe(
                             getViewLifecycleOwner(),

@@ -55,7 +55,7 @@ public class RegisterFragment extends BaseFragment<RegisterViewModel, RegisterRe
                     binding.etPassword.getText().toString(),
                     binding.etFirstName.getText().toString(),
                     binding.etLastName.getText().toString(),
-                    binding.etPhoneNumber.getText().toString()));
+                    binding.etEmail.getText().toString()));
         });
         viewModel.getErrMsgMutableLiveData().observe(getViewLifecycleOwner(), errMsg -> {
             Utils.constructToast(getContext(), errMsg).show();

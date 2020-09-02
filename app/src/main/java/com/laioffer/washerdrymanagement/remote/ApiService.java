@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 public interface ApiService {
 
     @POST("login")
-    Call<RemoteResponse<UserInfo>> login(@Body LoginEvent body);
+    Call<UserInfo> login(@Body LoginEvent body);
 
     @POST("register")
     Call<RemoteResponse<UserInfo>> register(@Body RegisterEvent body);

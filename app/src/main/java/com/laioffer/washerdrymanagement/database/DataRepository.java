@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.Gravity;
+import android.webkit.WebSettings;
 import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
@@ -74,16 +75,18 @@ public class DataRepository {
         });
         return resultLiveData;
     }
-    public void deleteReservaiton(String item_id) {
+    public void deleteReservaiton(String item_id, String status) {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("status", "available");
+            jsonObject.put("status", status);
             jsonObject.put("item_id", item_id);
         } catch (JSONException e) {
             e.printStackTrace();
         }
         RequestBody body = RequestBody.create(MediaType.parse("Content-Type, application/json"), jsonObject.toString());
-        dataApi.deleteReservation(body).enqueue(new Callback<ResponseBody>() {
+        Call<ResponseBody> call = dataApi.deleteReservation(body);
+        call.request().newBuilder();
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {

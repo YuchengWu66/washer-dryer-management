@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+
+
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
@@ -18,7 +20,6 @@ android {
     dataBinding {
         enabled = true
     }
-
     defaultConfig {
         applicationId "com.laioffer.washerdrymanagement"
         minSdkVersion 21
@@ -28,12 +29,24 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    viewBinding {
+        enabled = true
+    }
+    dataBinding {
+        enabled = true
+    }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+
     }
 
 }
@@ -86,5 +99,13 @@ dependencies {
     implementation 'androidx.work:work-runtime:2.1.0'
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:25.3.1'
+    
+    // yanbo
+    implementation 'com.loopj.android:android-async-http:1.4.11'
+    annotationProcessor "androidx.room:room-compiler:2.2.5"
+    implementation "androidx.room:room-guava:2.2.5"
+    implementation "androidx.room:room-runtime:2.2.5"
+    //implementation "commons-codec:commons-codec:1.14" 
+    compile 'commons-codec:commons-codec:1.14'
 
 }

@@ -9,34 +9,49 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-
-    <CheckBox
-        android:id="@+id/checkBox_add"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="40dp"
-        android:text="Add 20 mins" />
+        android:layout_margin="20dp"
+        android:text="Machine NO."
+        android:textSize="40dp"
+        android:id="@+id/startmachine_id"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
         android:gravity="bottom"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <Button
-            android:id="@+id/start_button"
-            android:layout_width="wrap_content"
+            android:id="@+id/wait_button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Start"
-            android:onClick="getMachineStart"/>
+            android:text="Start after 15 min"
+            android:onClick="prepareMachine"/>
 
-        <Button
-            android:id="@+id/report_button"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Report"
-            android:onClick="gotoReport"/>
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/start_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Start"
+                android:onClick="getMachineStart"/>
+
+            <Button
+                android:id="@+id/report_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Report"
+                android:onClick="gotoReport"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

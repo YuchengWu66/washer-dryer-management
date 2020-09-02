@@ -2,6 +2,7 @@ package com.laioffer.washerdrymanagement.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +18,10 @@ import com.laioffer.washerdrymanagement.R;
 import com.laioffer.washerdrymanagement.database.Item;
 import com.laioffer.washerdrymanagement.databinding.ElementLayoutBinding;
 import com.laioffer.washerdrymanagement.ui.detail.DetailActivity;
+import com.laioffer.washerdrymanagement.ui.detail.StartActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +45,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     }
     public void setWashers(List<Item> newList) {
         washers.clear();
+        Collections.sort(newList, (a, b)-> {
+            return a.item_id.compareTo(b.item_id);
+        });
         washers.addAll(newList);
         notifyDataSetChanged();
     }
@@ -61,19 +67,67 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     public void onBindViewHolder(@NonNull HomeAdapter.HomeViewHolder holder, int position) {
         Item washer = washers.get(position);
         holder.washerTextView.setText(washer.item_id);
-        holder.washerImageView.setImageResource(R.drawable.ic_kitchen_tools_washer_svgrepo_com);
         holder.typeTextView.setText(washer.type);
         holder.conditionTextView.setText(washer.condition);
         if (washer.condition.equals("available")) {
             holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, DetailActivity.class));
+                    Bundle b = new Bundle();
+                    b.putString("ID", washer.item_id);
+                    b.putString("type", washer.type);
+                    b.putString("condition", washer.condition);
+                    b.putString("end_time", washer.end_time);
+
+                    Intent intent = new Intent(context, StartActivity.class);
+                    intent.putExtras(b);
+                    context.startActivity(intent);
+
             }
         });
-            holder.conditionTextView.setTextColor(0xff00ff00);
+            holder.conditionTextView.setTextColor(0xff1296db);
+            if (washer.type.equals("washer")) {
+                holder.washerImageView.setImageResource(R.drawable.ic_washer_available);
+            }
+            else {
+                holder.washerImageView.setImageResource(R.drawable.ic_dryer_available);
+            }
+        }
+        else if (washer.condition.equals("reserve")){
+            holder.conditionTextView.setTextColor(0xfff4ea2a);
+            if (washer.type.equals("washer")) {
+                holder.washerImageView.setImageResource(R.drawable.ic_washer_using);
+            }
+            else {
+                holder.washerImageView.setImageResource(R.drawable.ic_dryer_using);
+            }
+        }
+
+        else if (washer.condition.equals("finished")){
+            holder.conditionTextView.setTextColor(0xffd4237a);
+            if (washer.type.equals("washer")) {
+                holder.washerImageView.setImageResource(R.drawable.ic_washer_finished);
+            }
+            else {
+                holder.washerImageView.setImageResource(R.drawable.ic_dryer_finished);
+            }
         }
         else{
+            holder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle b = new Bundle();
+                    b.putString("ID", washer.item_id);
+                    b.putString("type", washer.type);
+                    b.putString("condition", washer.condition);
+                    b.putString("end_time", washer.end_time);
+
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtras(b);
+                    context.startActivity(intent);
+
+                }
+            });
             holder.conditionTextView.setTextColor(0xffff0000);
         }
         holder.cardView.setVisibility(View.INVISIBLE);

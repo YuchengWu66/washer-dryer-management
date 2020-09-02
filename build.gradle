@@ -8,8 +8,17 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.2'
-        classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.2.1'
+
+//        classpath 'com.android.tools.build:gradle:4.0.1'
+//        implementation "com.android.support:support-compat:29.0.0"
+
+        classpath 'com.android.tools.build:gradle:3.6.4'
+        classpath 'com.google.gms:google-services:4.3.3'
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.0"
+
+//        implementation "com.android.support:support-compat:29.0.0"
+
+
         
 
         // NOTE: Do not place your application dependencies here; they belong
