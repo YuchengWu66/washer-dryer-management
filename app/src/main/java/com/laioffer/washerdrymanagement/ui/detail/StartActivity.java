@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class StartActivity extends AppCompatActivity {
     TextView MachineID;
     TextView MachineType;
     String StartURL;
+    ImageView machineImage;
 //    Button startbt;
 //    Button reportbt;
 //    Button waitbt;
@@ -46,13 +48,14 @@ public class StartActivity extends AppCompatActivity {
         MachineType = findViewById(R.id.start_type);
         MachineID.setText(ID);
         MachineType.setText(type);
+        machineImage = findViewById(R.id.icon_start);
         switch (type){
             case ("Washer"):
-                //change image
+                machineImage.setImageAlpha(R.drawable.ic_washer_available);
             case ("Dryer"):
-                // change to dryer image
-            case("Other"):
-                // change to other
+                machineImage.setImageAlpha(R.drawable.ic_dryer_available);
+            default:
+                machineImage.setImageAlpha(R.drawable.ic_xiyiji);
         }
         setContentView(R.layout.fragment_start);
 
