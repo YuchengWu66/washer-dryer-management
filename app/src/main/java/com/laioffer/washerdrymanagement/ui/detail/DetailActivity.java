@@ -59,6 +59,9 @@ public class DetailActivity extends AppCompatActivity {
                 case ("occupied"):
                     conditionImage.setImageAlpha(R.drawable.ic_washer_occupied);
             }
+            if (time == "0"){
+                conditionImage.setImageAlpha(R.drawable.ic_washer_finished);
+            }
         }else if (type == "Dryer"){
             switch (condition) {
                 case ("reserve"):
@@ -70,12 +73,15 @@ public class DetailActivity extends AppCompatActivity {
                 case ("occupied"):
                     conditionImage.setImageAlpha(R.drawable.ic_dryer_occupied);
             }
+            if (time == "0"){
+                conditionImage.setImageAlpha(R.drawable.ic_dryer_occupied);
+            }
         }else{
             conditionImage.setImageAlpha(R.drawable.ic_xiyiji);
         }
         viewtitle.setText("#"+ID+" Washing Machine");
 //        MachineID.setText("NO."+machineID);
-        timeLeft.setText(time);
+        timeLeft.setText(time + "mins left");
 //        detailCondition.setText(condition);
         StartURL = ""; // Set URL
 

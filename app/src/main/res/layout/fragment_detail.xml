@@ -17,6 +17,7 @@
             android:id="@+id/details_title_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:textSize="20sp"
             android:textStyle="bold"
             tools:text="#01 Washing Machine" />
