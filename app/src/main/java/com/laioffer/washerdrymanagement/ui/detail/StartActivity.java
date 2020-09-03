@@ -73,6 +73,7 @@ public class StartActivity extends AppCompatActivity {
         Bundle b = new Bundle();
         b.putString("ID", ID);
         intent.putExtras(b);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         //navigate to report with machineID
     }
