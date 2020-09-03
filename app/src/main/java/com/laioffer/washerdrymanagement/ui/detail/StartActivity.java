@@ -27,31 +27,38 @@ import cz.msebera.android.httpclient.Header;
 public class StartActivity extends AppCompatActivity {
    // String UserID;
     String ID;
-    String machineID;
+    String type;
 //    CheckBox checkbox;
     TextView MachineID;
+    TextView MachineType;
     String StartURL;
 //    Button startbt;
 //    Button reportbt;
 //    Button waitbt;
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            Bundle bundle = data.getExtras();
-            ID = bundle.getString("ID");
-            machineID = "Machine NO." + ID;
-        //    UserID = bundle.getString("user");
-            MachineID = findViewById(R.id.startmachine_id);
-            MachineID.setText(machineID);
-
-        }
-    }
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_start);
+        ID = getIntent().getStringExtra("ID");
+        type = getIntent().getStringExtra("type");
+        MachineID = findViewById(R.id.startmachine_id);
+        MachineType = findViewById(R.id.start_type);
+        MachineID.setText(ID);
+        MachineType.setText(type);
+        switch (type){
+            case ("Washer"):
+                //change image
+            case ("Dryer"):
+                // change to dryer image
+            case("Other"):
+                // change to other
+        }
+        setContentView(R.layout.fragment_start);
+
+
+
+
 //        ActionBar actionBar = getActionBar();
 //        actionBar.setDisplayHomeAsUpEnabled(true);
 //        checkbox = findViewById(R.id.checkBox_add);
@@ -69,7 +76,7 @@ public class StartActivity extends AppCompatActivity {
         //start api with UserID and MachineID
     }
     public void gotoReport(View v){
-        Intent intent = new Intent(this, ReportActivity.class);
+        Intent intent = new Intent(StartActivity.this, ReportActivity.class);
         Bundle b = new Bundle();
         b.putString("ID", ID);
         intent.putExtras(b);

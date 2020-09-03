@@ -33,6 +33,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     public int filter;
     private Context context;
     private Map<Integer, String> map;
+
     public HomeAdapter(Context context, int filter) {
         this.context = context;
         this.filter = filter;
@@ -124,6 +125,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
                     Intent intent = new Intent(context, DetailActivity.class);
                     intent.putExtras(b);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
 
                 }
