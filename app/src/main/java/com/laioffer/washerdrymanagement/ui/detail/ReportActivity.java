@@ -27,13 +27,13 @@ public class ReportActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_report);
         ID = getIntent().getStringExtra("ID");
         editTextMachineID = findViewById(R.id.report_machineID);
         editTexterror = findViewById(R.id.report_error);
         editTextMachineID.setText(ID);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.fragment_report);
     }
 
     public void sendReport(View V){
