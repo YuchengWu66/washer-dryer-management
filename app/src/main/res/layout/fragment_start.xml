@@ -24,6 +24,17 @@
         android:text="Type: "
         android:textSize="30dp"
         android:id="@+id/start_type"/>
+    <ImageView
+        android:id="@+id/icon_start"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_above="@id/tv_subtitle_login"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/ic_washer_occupied" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,6 +47,10 @@
             android:id="@+id/wait_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/et_password_login"
+            android:background="@drawable/btn_custom2"
+            android:layout_marginTop="15dp"
+            android:textColor="@android:color/white"
             android:text="Start after 15 min"
             android:onClick="prepareMachine"/>
 
@@ -43,12 +58,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/start_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/et_password_login"
+                android:background="@drawable/btn_custom2"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/white"
                 android:layout_weight="1"
                 android:text="Start"
                 android:onClick="getMachineStart"/>
@@ -57,6 +78,11 @@
                 android:id="@+id/report_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/et_password_login"
+                android:background="@drawable/btn_custom2"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/white"
                 android:layout_weight="1"
                 android:text="Report"
                 android:onClick="gotoReport"/>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,33 +28,57 @@ public class DetailActivity extends AppCompatActivity {
     String condition;
     String type;
     String StartURL;
+    ImageView conditionImage;
+    TextView viewtitle;
     TextView MachineID;
     TextView timeLeft;
     TextView detailCondition;
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            Bundle bundle = data.getExtras();
-            ID = bundle.getString("ID");
-            time = bundle.getString("end_time");
-            condition = bundle.getString("condition");
-//            type = bundle.getString("type");
-        }
-    }
-    @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_detail);
+        ID = getIntent().getStringExtra("ID");
+        type = getIntent().getStringExtra("type");
+        time = getIntent().getStringExtra("end_time");
+        condition = getIntent().getStringExtra("condition");
         String machineID = "Machine NO." + ID;
         //    UserID = bundle.getString("user");
-        MachineID = findViewById(R.id.details_machine_num);
+        conditionImage = findViewById(R.id.icon_detail);
+        viewtitle = findViewById(R.id.details_title_text_view);
+//        MachineID = findViewById(R.id.details_machine_num);
         timeLeft = findViewById(R.id.details_time_left);
-        detailCondition = findViewById(R.id.detail_condition);
-        MachineID.setText(machineID);
+
+        if (type == "Washer") {
+            switch (condition) {
+                case ("reserve"):
+                    conditionImage.setImageAlpha(R.drawable.ic_washer_using);
+                case ("available"):
+                    conditionImage.setImageAlpha(R.drawable.ic_washer_available);
+                case ("finished"):
+                    conditionImage.setImageAlpha(R.drawable.ic_washer_finished);
+                case ("occupied"):
+                    conditionImage.setImageAlpha(R.drawable.ic_washer_occupied);
+            }
+        }else if (type == "Dryer"){
+            switch (condition) {
+                case ("reserve"):
+                    conditionImage.setImageAlpha(R.drawable.ic_dryer_using);
+                case ("available"):
+                    conditionImage.setImageAlpha(R.drawable.ic_dryer_available);
+                case ("finished"):
+                    conditionImage.setImageAlpha(R.drawable.ic_dryer_finished);
+                case ("occupied"):
+                    conditionImage.setImageAlpha(R.drawable.ic_dryer_occupied);
+            }
+        }else{
+            conditionImage.setImageAlpha(R.drawable.ic_xiyiji);
+        }
+        viewtitle.setText("#"+ID+" Washing Machine");
+//        MachineID.setText("NO."+machineID);
         timeLeft.setText(time);
-        detailCondition.setText(condition);
+//        detailCondition.setText(condition);
         StartURL = ""; // Set URL
+
 
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);

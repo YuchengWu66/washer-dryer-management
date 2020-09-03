@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class ReportActivity extends AppCompatActivity {
     String ID;
+    ImageView machineImage;
     private EditText editTextMachineID;
     private EditText editTexterror;
     private String REPORT_URL; // add later
@@ -29,11 +31,23 @@ public class ReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_report);
         ID = getIntent().getStringExtra("ID");
+        String type = getIntent().getStringExtra("type");
         editTextMachineID = findViewById(R.id.report_machineID);
         editTexterror = findViewById(R.id.report_error);
         editTextMachineID.setText(ID);
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        machineImage = findViewById(R.id.icon_report);
+        switch (type){
+            case ("Washer"):
+                machineImage.setImageAlpha(R.drawable.ic_washer_available);
+            case ("Dryer"):
+                machineImage.setImageAlpha(R.drawable.ic_dryer_available);
+            default:
+                machineImage.setImageAlpha(R.drawable.ic_xiyiji);
+        }
+//        ActionBar actionBar = getActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+//        setContentView(R.layout.fragment_report);
     }
 
     public void sendReport(View V){
