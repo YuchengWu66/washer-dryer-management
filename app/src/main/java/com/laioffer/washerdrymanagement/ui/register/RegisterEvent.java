@@ -7,12 +7,12 @@ public class RegisterEvent {
     final String userId;
     @SerializedName("password")
     final String password;
-    @SerializedName("email")
-    final String email;
+    @SerializedName("phone_number")
+    final String phoneNumber;
 
-    RegisterEvent(String userId, String password, String email) {
+    RegisterEvent(String userId, String password, String phoneNumber) {
         this.userId = userId;
         this.password = password;
-        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 }
