@@ -43,15 +43,7 @@ public class RegisterViewModel extends BaseViewModel<RegisterRepository> {
             errMsgMutableLiveData.setValue("Please enter a valid password!");
             return;
         }
-        if (Utils.isNullOrEmpty(registerEvent.firstName)) {
-            errMsgMutableLiveData.setValue("Please enter a first Name!");
-            return;
-        }
-        if (Utils.isNullOrEmpty(registerEvent.lastName)) {
-            errMsgMutableLiveData.setValue("Please enter a last Name!");
-            return;
-        }
-        if (Utils.isNullOrEmpty(registerEvent.phoneNumber)) {
+        if (Utils.isNullOrEmpty(registerEvent.email)) {
             errMsgMutableLiveData.setValue("Please enter a Phone Number!");
             return;
         }
